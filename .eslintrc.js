@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: [
-    '@typescript-eslint',
+    '@typescript-eslint', 'prettier'
   ],
   extends: [
     'eslint:recommended',
@@ -21,6 +21,8 @@ module.exports = {
     'react/static-property-placement': 0,
     'jsx-a11y/alt-text': 0,
     'react/jsx-props-no-spreading': 0,
+    'prettier/prettier': 'error',
+
     'import/order': [
       1,
       {
@@ -35,7 +37,8 @@ module.exports = {
           'index'
         ],
         'newlines-between': 'always'
-      }
+      },
+
     ],
   }
 };
