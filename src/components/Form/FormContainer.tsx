@@ -9,26 +9,20 @@ import {
 } from 'formik';
 import React from 'react';
 
-interface IRouteObject {
-  km: number;
-  amountofDays: number;
-}
+import calculateTaxReduction from '../../api/reisefradrag';
+import { IFormValues } from '../../interfaces/IFormValues';
+import Card from '../Card/Card';
 
-interface IFormValues {
-  workroutes: Array<IRouteObject>;
-  visitRoutes: Array<IRouteObject>;
-  expenditure: number;
-}
+import './style.scss';
 
 export default function FormContainer() {
   return (
-    <div>
-      <h1>Signup</h1>
+    <div className="formContainer">
       <Formik
         initialValues={{
-          workroutes: [{ km: 0, amountofDays: 0 }],
-          visitRoutes: [{ km: 0, amountofDays: 0 }],
-          expenditure: 0
+          arbeidsreiser: [{ km: 0, amountofDays: 0 }],
+          besoeksreiser: [{ km: 0, amountofDays: 0 }],
+          utgifterBomFergeEtc: 0
         }}
         onSubmit={(
           values: IFormValues,
@@ -36,82 +30,158 @@ export default function FormContainer() {
         ) => {
           console.log(values);
           setSubmitting(false);
+
+          calculateTaxReduction(values);
         }}
       >
         {({ values }) => (
           <Form>
-            <FieldArray name="workroutes">
-              {({ remove, push }) => (
-                <div>
-                  {values.workroutes.length > 0 &&
-                    values.workroutes.map((workroute, index) => (
-                      <div className="row">
-                        <div className="col">
-                          <label htmlFor={`workroutes.${index}.km`}>km</label>
-                          <Field
-                            name={`workroutes.${index}.km`}
-                            placeholder="0"
-                            type="number"
-                          />
-                          <ErrorMessage
-                            name={`workroutes.${index}.km`}
-                            component="div"
-                            className="field-error"
-                          />
+            <Card>
+              <h2>Arbeidsreiser</h2>
+              <FieldArray name="arbeidsreiser">
+                {({ remove, push }) => (
+                  <div>
+                    {values.arbeidsreiser.length > 0 &&
+                      values.arbeidsreiser.map((arbeidsreise, index) => (
+                        <div className="row">
+                          <div className="col">
+                            <label htmlFor={`arbeidsreiser.${index}.km`}>
+                              km
+                            </label>
+                            <Field
+                              name={`arbeidsreiser.${index}.km`}
+                              placeholder="0"
+                              type="number"
+                            />
+                            <ErrorMessage
+                              name={`arbeidsreiser.${index}.km`}
+                              component="div"
+                              className="field-error"
+                            />
+                          </div>
+                          <div className="col">
+                            <label
+                              htmlFor={`arbeidsreiser.${index}.amountofDays`}
+                            >
+                              amountofDays
+                            </label>
+                            <Field
+                              name={`arbeidsreiser.${index}.amountofDays`}
+                              placeholder="0"
+                              type="number"
+                            />
+                            <ErrorMessage
+                              name={`arbeidsreiser.${index}.amountofDays`}
+                              component="div"
+                              className="field-error"
+                            />
+                          </div>
+                          <div className="col">
+                            <button
+                              type="button"
+                              className="secondary"
+                              onClick={() => remove(index)}
+                            >
+                              remove
+                            </button>
+                          </div>
                         </div>
-                        <div className="col">
-                          <label htmlFor={`workroutes.${index}.amountofDays`}>
-                            amountofDays
-                          </label>
-                          <Field
-                            name={`workroutes.${index}.amountofDays`}
-                            placeholder="0"
-                            type="number"
-                          />
-                          <ErrorMessage
-                            name={`workroutes.${index}.amountofDays`}
-                            component="div"
-                            className="field-error"
-                          />
-                        </div>
-                        <div className="col">
-                          <button
-                            type="button"
-                            className="secondary"
-                            onClick={() => remove(index)}
-                          >
-                            remove
-                          </button>
-                        </div>
+                      ))}
+                    <div className="row">
+                      {' '}
+                      <div className="col">
+                        <button
+                          type="button"
+                          className="secondary"
+                          onClick={() => push({ km: 0, amountofDays: 0 })}
+                        >
+                          Add route
+                        </button>
                       </div>
-                    ))}
-                  <button
-                    type="button"
-                    className="secondary"
-                    onClick={() => push({ km: 0, amountofDays: 0 })}
-                  >
-                    Add Friend
-                  </button>
+                    </div>
+                  </div>
+                )}
+              </FieldArray>
+            </Card>
+
+            <Card>
+              <h2>Besøksreiser</h2>
+              <FieldArray name="besoeksreiser">
+                {({ remove, push }) => (
+                  <div>
+                    {values.besoeksreiser.length > 0 &&
+                      values.besoeksreiser.map((besoeksreise, index) => (
+                        <div className="row">
+                          <div className="col">
+                            <label htmlFor={`besoeksreiser.${index}.km`}>
+                              km
+                            </label>
+                            <Field
+                              name={`besoeksreiser.${index}.km`}
+                              placeholder="0"
+                              type="number"
+                            />
+                            <ErrorMessage
+                              name={`besoeksreiser.${index}.km`}
+                              component="div"
+                              className="field-error"
+                            />
+                          </div>
+                          <div className="col">
+                            <label
+                              htmlFor={`besoeksreiser.${index}.amountofDays`}
+                            >
+                              amountofDays
+                            </label>
+                            <Field
+                              name={`besoeksreiser.${index}.amountofDays`}
+                              placeholder="0"
+                              type="number"
+                            />
+                            <ErrorMessage
+                              name={`besoeksreiser.${index}.amountofDays`}
+                              component="div"
+                              className="field-error"
+                            />
+                          </div>
+                          <div className="col">
+                            <button
+                              type="button"
+                              className="secondary"
+                              onClick={() => remove(index)}
+                            >
+                              remove
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    <div className="row">
+                      {' '}
+                      <div className="col">
+                        <button
+                          type="button"
+                          className="secondary"
+                          onClick={() => push({ km: 0, amountofDays: 0 })}
+                        >
+                          Add route
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </FieldArray>
+            </Card>
+
+            <Card>
+              <div className="row">
+                <div className="col">
+                  <label htmlFor="utgifterBomFergeEtc">
+                    utgifterBomFergeEtc
+                  </label>
+                  <Field name="utgifterBomFergeEtc" type="number" />
                 </div>
-              )}
-            </FieldArray>
-
-            {/*
-          <label htmlFor="firstName">First Name</label>
-          <Field id="firstName" name="firstName" placeholder="John" />
-
-          <label htmlFor="lastName">Last Name</label>
-          <Field id="lastName" name="lastName" placeholder="Doe" />
-
-          <label htmlFor="email">Email</label>
-          <Field
-            id="email"
-            name="email"
-            placeholder="john@acme.com"
-            type="email"
-          />
-          */}
-
+              </div>
+            </Card>
             <button type="submit">Submit</button>
           </Form>
         )}
