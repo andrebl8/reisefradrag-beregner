@@ -2,7 +2,7 @@
   "name": "reisefradrag-beregner",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andrebl8.github.io/reisefradrag-beregner",
+  "homepage": "https://andrebl8.github.io/reisefradrag-beregner/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
