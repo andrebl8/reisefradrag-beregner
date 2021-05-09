@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/reisefradrag-beregner/static/css/main.fd10d02a.chunk.css",
-    "main.js": "/reisefradrag-beregner/static/js/main.a936d83e.chunk.js",
-    "main.js.map": "/reisefradrag-beregner/static/js/main.a936d83e.chunk.js.map",
+    "main.js": "/reisefradrag-beregner/static/js/main.a4f3395a.chunk.js",
+    "main.js.map": "/reisefradrag-beregner/static/js/main.a4f3395a.chunk.js.map",
     "runtime-main.js": "/reisefradrag-beregner/static/js/runtime-main.a934274f.js",
     "runtime-main.js.map": "/reisefradrag-beregner/static/js/runtime-main.a934274f.js.map",
     "static/js/2.1bc3302d.chunk.js": "/reisefradrag-beregner/static/js/2.1bc3302d.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.a934274f.js",
     "static/js/2.1bc3302d.chunk.js",
     "static/css/main.fd10d02a.chunk.css",
-    "static/js/main.a936d83e.chunk.js"
+    "static/js/main.a4f3395a.chunk.js"
   ]
 }
