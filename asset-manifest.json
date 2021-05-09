@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "//andrebl8.github.io/reisefradrag-beregner/static/css/main.fc311358.chunk.css",
-    "main.js": "//andrebl8.github.io/reisefradrag-beregner/static/js/main.fef07747.chunk.js",
-    "main.js.map": "//andrebl8.github.io/reisefradrag-beregner/static/js/main.fef07747.chunk.js.map",
-    "runtime-main.js": "//andrebl8.github.io/reisefradrag-beregner/static/js/runtime-main.fe71d33a.js",
-    "runtime-main.js.map": "//andrebl8.github.io/reisefradrag-beregner/static/js/runtime-main.fe71d33a.js.map",
-    "static/js/2.9a45f68a.chunk.js": "//andrebl8.github.io/reisefradrag-beregner/static/js/2.9a45f68a.chunk.js",
-    "static/js/2.9a45f68a.chunk.js.map": "//andrebl8.github.io/reisefradrag-beregner/static/js/2.9a45f68a.chunk.js.map",
-    "index.html": "//andrebl8.github.io/reisefradrag-beregner/index.html",
-    "static/css/main.fc311358.chunk.css.map": "//andrebl8.github.io/reisefradrag-beregner/static/css/main.fc311358.chunk.css.map",
-    "static/js/2.9a45f68a.chunk.js.LICENSE.txt": "//andrebl8.github.io/reisefradrag-beregner/static/js/2.9a45f68a.chunk.js.LICENSE.txt"
+    "main.css": "/reisefradrag-beregner/static/css/main.fc311358.chunk.css",
+    "main.js": "/reisefradrag-beregner/static/js/main.fef07747.chunk.js",
+    "main.js.map": "/reisefradrag-beregner/static/js/main.fef07747.chunk.js.map",
+    "runtime-main.js": "/reisefradrag-beregner/static/js/runtime-main.a934274f.js",
+    "runtime-main.js.map": "/reisefradrag-beregner/static/js/runtime-main.a934274f.js.map",
+    "static/js/2.9a45f68a.chunk.js": "/reisefradrag-beregner/static/js/2.9a45f68a.chunk.js",
+    "static/js/2.9a45f68a.chunk.js.map": "/reisefradrag-beregner/static/js/2.9a45f68a.chunk.js.map",
+    "index.html": "/reisefradrag-beregner/index.html",
+    "static/css/main.fc311358.chunk.css.map": "/reisefradrag-beregner/static/css/main.fc311358.chunk.css.map",
+    "static/js/2.9a45f68a.chunk.js.LICENSE.txt": "/reisefradrag-beregner/static/js/2.9a45f68a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.fe71d33a.js",
+    "static/js/runtime-main.a934274f.js",
     "static/js/2.9a45f68a.chunk.js",
     "static/css/main.fc311358.chunk.css",
     "static/js/main.fef07747.chunk.js"
