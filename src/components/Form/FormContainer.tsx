@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import {
   Formik,
@@ -36,7 +37,6 @@ export default function FormContainer() {
           values: IFormValues,
           { setSubmitting }: FormikHelpers<IFormValues>
         ) => {
-          console.log(values);
           setSubmitting(false);
           postCalculation(values);
         }}
@@ -111,7 +111,6 @@ export default function FormContainer() {
                 )}
               </FieldArray>
             </Card>
-
             <Card>
               <h2>Besøksreiser</h2>
               <FieldArray name="besoeksreiser">
@@ -180,7 +179,6 @@ export default function FormContainer() {
                 )}
               </FieldArray>
             </Card>
-
             <Card>
               <div className="row">
                 <div className="col">
@@ -189,9 +187,14 @@ export default function FormContainer() {
                 </div>
               </div>
             </Card>
-            <button type="submit" disabled={loading}>
-              Submit
-            </button>
+            <div className="button-wrapper">
+              <button type="reset" disabled={loading}>
+                reset
+              </button>
+              <button type="submit" disabled={loading}>
+                Submit
+              </button>
+            </div>
           </Form>
         )}
       </Formik>

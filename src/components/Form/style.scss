@@ -11,6 +11,11 @@
   }
 }
 
+.button-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
 form {
   padding: 1em;
   background: #f9f9f9;

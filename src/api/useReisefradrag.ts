@@ -27,8 +27,6 @@ const useReiseFradag = () => {
     try {
       const fetchedResult = await fetch(url, options);
       const response = await fetchedResult.json();
-      console.log('kek', response);
-
       setCalculation(response);
     } catch (e) {
       console.error('something went wrong', e);
@@ -36,12 +34,6 @@ const useReiseFradag = () => {
       setLoading(false);
     }
   };
-
-  // return fetch(url, options).then((response) => {
-  //   console.log(response);
-  //   return response;
-  // });
-
   return { loading, doTheFetch };
 };
 

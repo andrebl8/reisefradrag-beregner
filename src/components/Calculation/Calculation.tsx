@@ -1,16 +1,17 @@
 import React from 'react';
 
 import { useCalculationContext } from '../../context/calculationContext';
+import Card from '../Card/Card';
+import './style.scss';
 
 export default function Calculation() {
-  const test = useCalculationContext();
-
-  const { calculation } = test;
-  console.log(calculation);
+  const { calculation } = useCalculationContext();
 
   return (
-    <div>
-      resultat: <h3>{calculation?.reisefradrag}</h3>
+    <div className="calculatonResultWrapper">
+      <Card>
+        resultat: <h3>{calculation?.reisefradrag}</h3>
+      </Card>
     </div>
   );
 }
