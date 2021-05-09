@@ -9,7 +9,6 @@ import {
 } from 'formik';
 import React from 'react';
 
-import calculateTaxReduction from '../../api/reisefradrag';
 import { IFormValues } from '../../interfaces/IFormValues';
 import Card from '../Card/Card';
 
@@ -31,7 +30,7 @@ export default function FormContainer() {
           console.log(values);
           setSubmitting(false);
 
-          calculateTaxReduction(values);
+          // calculateTaxReduction(values);
         }}
       >
         {({ values }) => (
