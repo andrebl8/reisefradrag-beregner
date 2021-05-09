@@ -9,9 +9,13 @@ export default function Calculation() {
 
   return (
     <div className="calculatonResultWrapper">
-      <Card>
-        resultat: <h3>{calculation?.reisefradrag}</h3>
-      </Card>
+      {calculation?.reisefradrag && (
+        <Card>
+          <h2>Beregnet reisefradrag:</h2>
+          Du kan føre:
+          <h3>{calculation?.reisefradrag} kr</h3>
+        </Card>
+      )}
     </div>
   );
 }

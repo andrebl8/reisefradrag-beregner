@@ -45,6 +45,9 @@ export default function FormContainer() {
           <Form>
             <Card>
               <h2>Arbeidsreiser</h2>
+              <p>
+                Før antall kilometer og antall forekomster for arbeidsreiser
+              </p>
               <FieldArray name="arbeidsreiser">
                 {({ remove, push }) => (
                   <div>
@@ -85,13 +88,15 @@ export default function FormContainer() {
                             />
                           </div>
                           <div className="col">
-                            <button
-                              type="button"
-                              className="secondary"
-                              onClick={() => remove(index)}
-                            >
-                              remove
-                            </button>
+                            {values.arbeidsreiser.length > 1 && (
+                              <button
+                                type="button"
+                                className="secondary"
+                                onClick={() => remove(index)}
+                              >
+                                fjern
+                              </button>
+                            )}
                           </div>
                         </div>
                       ))}
@@ -113,6 +118,7 @@ export default function FormContainer() {
             </Card>
             <Card>
               <h2>Besøksreiser</h2>
+              <p>Før antall kilometer og antall forekomster for besøksreiser</p>
               <FieldArray name="besoeksreiser">
                 {({ remove, push }) => (
                   <div>
@@ -153,13 +159,15 @@ export default function FormContainer() {
                             />
                           </div>
                           <div className="col">
-                            <button
-                              type="button"
-                              className="secondary"
-                              onClick={() => remove(index)}
-                            >
-                              remove
-                            </button>
+                            {values.besoeksreiser.length > 1 && (
+                              <button
+                                type="button"
+                                className="secondary"
+                                onClick={() => remove(index)}
+                              >
+                                Fjern
+                              </button>
+                            )}
                           </div>
                         </div>
                       ))}
@@ -171,7 +179,7 @@ export default function FormContainer() {
                           className="secondary"
                           onClick={() => push({ km: 0, antall: 0 })}
                         >
-                          Add route
+                          Legg til rute
                         </button>
                       </div>
                     </div>
@@ -185,6 +193,9 @@ export default function FormContainer() {
                   <label htmlFor="utgifterBomFergeEtc">Diverse utgifter</label>
                   <Field name="utgifterBomFergeEtc" type="number" />
                 </div>
+              </div>
+              <div className="row">
+                Her kan du før utgifter for bom, ferge og andre
               </div>
             </Card>
             <div className="button-wrapper">
