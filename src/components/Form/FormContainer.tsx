@@ -10,7 +10,6 @@ import {
 import React from 'react';
 
 import useReiseFradag from '../../api/useReisefradrag';
-import { useCalculationContext } from '../../context/calculationContext';
 import { IFormValues } from '../../interfaces/IFormValues';
 import Card from '../Card/Card';
 
@@ -19,15 +18,10 @@ import './style.scss';
 export default function FormContainer() {
   // TODO Fix any type
 
-  const { loading, doTheFetch, result } = useReiseFradag();
-
-  const { setCalculation } = useCalculationContext();
+  const { loading, doTheFetch } = useReiseFradag();
 
   const postCalculation = async (values) => {
     await doTheFetch(values);
-
-    setCalculation(result);
-    console.log('sing me to sleep', result);
   };
 
   return (

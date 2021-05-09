@@ -8,7 +8,7 @@ export type CalculationContent = {
   setCalculation: (calculation: IReisefradrag) => void;
 };
 export const CalculationContext = createContext<CalculationContent>({
-  calculation: {} as IReisefradrag, // set a default value
+  calculation: {} as IReisefradrag,
   setCalculation: () => {}
 });
 export const useCalculationContext = () => useContext(CalculationContext);

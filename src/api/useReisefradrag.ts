@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
+import { useCalculationContext } from '../context/calculationContext';
 import { IFormValues } from '../interfaces/IFormValues';
-import { IReisefradrag } from '../interfaces/IReisefradrag';
 
 const url =
   'https://9f22opit6e.execute-api.us-east-2.amazonaws.com/default/reisefradrag';
@@ -18,13 +18,7 @@ const createOptions = (body: IFormValues) => {
 
 const useReiseFradag = () => {
   const [loading, setLoading] = useState(false);
-  // TODO: Fix any type
-  const [result, setResult] = useState<IReisefradrag>({} as IReisefradrag);
-
-  useEffect(() => {
-    console.log('LOOLOL', result);
-    setResult(result);
-  }, [result]);
+  const { setCalculation } = useCalculationContext();
 
   const doTheFetch = async (postBody: IFormValues) => {
     setLoading(true);
@@ -35,7 +29,7 @@ const useReiseFradag = () => {
       const response = await fetchedResult.json();
       console.log('kek', response);
 
-      setResult(response);
+      setCalculation(response);
     } catch (e) {
       console.error('something went wrong', e);
     } finally {
@@ -48,7 +42,7 @@ const useReiseFradag = () => {
   //   return response;
   // });
 
-  return { loading, doTheFetch, result };
+  return { loading, doTheFetch };
 };
 
 export default useReiseFradag;
