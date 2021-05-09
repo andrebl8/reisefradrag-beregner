@@ -9,18 +9,33 @@ import {
 } from 'formik';
 import React from 'react';
 
+import useReiseFradag from '../../api/useReisefradrag';
+import { useCalculationContext } from '../../context/calculationContext';
 import { IFormValues } from '../../interfaces/IFormValues';
 import Card from '../Card/Card';
 
 import './style.scss';
 
 export default function FormContainer() {
+  // TODO Fix any type
+
+  const { loading, doTheFetch, result } = useReiseFradag();
+
+  const { setCalculation } = useCalculationContext();
+
+  const postCalculation = async (values) => {
+    await doTheFetch(values);
+
+    setCalculation(result);
+    console.log('sing me to sleep', result);
+  };
+
   return (
     <div className="formContainer">
       <Formik
         initialValues={{
-          arbeidsreiser: [{ km: 0, amountofDays: 0 }],
-          besoeksreiser: [{ km: 0, amountofDays: 0 }],
+          arbeidsreiser: [{ km: 0, antall: 0 }],
+          besoeksreiser: [{ km: 0, antall: 0 }],
           utgifterBomFergeEtc: 0
         }}
         onSubmit={(
@@ -29,8 +44,7 @@ export default function FormContainer() {
         ) => {
           console.log(values);
           setSubmitting(false);
-
-          // calculateTaxReduction(values);
+          postCalculation(values);
         }}
       >
         {({ values }) => (
@@ -42,7 +56,10 @@ export default function FormContainer() {
                   <div>
                     {values.arbeidsreiser.length > 0 &&
                       values.arbeidsreiser.map((arbeidsreise, index) => (
-                        <div className="row">
+                        <div
+                          className="row"
+                          key={`arbeidsreiser-${arbeidsreise[index]}`}
+                        >
                           <div className="col">
                             <label htmlFor={`arbeidsreiser.${index}.km`}>
                               km
@@ -59,18 +76,16 @@ export default function FormContainer() {
                             />
                           </div>
                           <div className="col">
-                            <label
-                              htmlFor={`arbeidsreiser.${index}.amountofDays`}
-                            >
-                              amountofDays
+                            <label htmlFor={`arbeidsreiser.${index}.antall`}>
+                              antall
                             </label>
                             <Field
-                              name={`arbeidsreiser.${index}.amountofDays`}
+                              name={`arbeidsreiser.${index}.antall`}
                               placeholder="0"
                               type="number"
                             />
                             <ErrorMessage
-                              name={`arbeidsreiser.${index}.amountofDays`}
+                              name={`arbeidsreiser.${index}.antall`}
                               component="div"
                               className="field-error"
                             />
@@ -92,7 +107,7 @@ export default function FormContainer() {
                         <button
                           type="button"
                           className="secondary"
-                          onClick={() => push({ km: 0, amountofDays: 0 })}
+                          onClick={() => push({ km: 0, antall: 0 })}
                         >
                           Add route
                         </button>
@@ -110,7 +125,10 @@ export default function FormContainer() {
                   <div>
                     {values.besoeksreiser.length > 0 &&
                       values.besoeksreiser.map((besoeksreise, index) => (
-                        <div className="row">
+                        <div
+                          className="row"
+                          key={`besoeksreise-${besoeksreise[index]}`}
+                        >
                           <div className="col">
                             <label htmlFor={`besoeksreiser.${index}.km`}>
                               km
@@ -127,18 +145,16 @@ export default function FormContainer() {
                             />
                           </div>
                           <div className="col">
-                            <label
-                              htmlFor={`besoeksreiser.${index}.amountofDays`}
-                            >
-                              amountofDays
+                            <label htmlFor={`besoeksreiser.${index}.antall`}>
+                              antall
                             </label>
                             <Field
-                              name={`besoeksreiser.${index}.amountofDays`}
+                              name={`besoeksreiser.${index}.antall`}
                               placeholder="0"
                               type="number"
                             />
                             <ErrorMessage
-                              name={`besoeksreiser.${index}.amountofDays`}
+                              name={`besoeksreiser.${index}.antall`}
                               component="div"
                               className="field-error"
                             />
@@ -160,7 +176,7 @@ export default function FormContainer() {
                         <button
                           type="button"
                           className="secondary"
-                          onClick={() => push({ km: 0, amountofDays: 0 })}
+                          onClick={() => push({ km: 0, antall: 0 })}
                         >
                           Add route
                         </button>
@@ -174,14 +190,14 @@ export default function FormContainer() {
             <Card>
               <div className="row">
                 <div className="col">
-                  <label htmlFor="utgifterBomFergeEtc">
-                    utgifterBomFergeEtc
-                  </label>
+                  <label htmlFor="utgifterBomFergeEtc">Diverse utgifter</label>
                   <Field name="utgifterBomFergeEtc" type="number" />
                 </div>
               </div>
             </Card>
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={loading}>
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
