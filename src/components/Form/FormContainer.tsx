@@ -108,7 +108,7 @@ export default function FormContainer() {
                           className="secondary"
                           onClick={() => push({ km: 0, antall: 0 })}
                         >
-                          Add route
+                          Legg til rute
                         </button>
                       </div>
                     </div>
@@ -203,7 +203,7 @@ export default function FormContainer() {
                 reset
               </button>
               <button type="submit" disabled={loading}>
-                Submit
+                Beregn
               </button>
             </div>
           </Form>
